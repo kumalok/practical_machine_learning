@@ -30,7 +30,7 @@ In this project, our goal is to use data from accelerometers on the belt, forear
 
 ## Data Preprocessing
 
-```{r, echo=FALSE}
+```{r, message=FALSE,warning=FALSE}
 library(caret)
 library(rpart)
 library(rpart.plot)

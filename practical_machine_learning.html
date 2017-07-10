@@ -140,20 +140,30 @@ $(document).ready(function () {
 </div>
 <div id="data-preprocessing" class="section level2">
 <h2>Data Preprocessing</h2>
-<pre><code>## Warning: package 'caret' was built under R version 3.4.1</code></pre>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## Loading required package: ggplot2</code></pre>
-<pre><code>## Warning: package 'rpart.plot' was built under R version 3.4.1</code></pre>
-<pre><code>## Warning: package 'randomForest' was built under R version 3.4.1</code></pre>
-<pre><code>## randomForest 4.6-12</code></pre>
-<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<pre><code>## 
-## Attaching package: 'randomForest'</code></pre>
-<pre><code>## The following object is masked from 'package:ggplot2':
-## 
-##     margin</code></pre>
-<pre><code>## Warning: package 'corrplot' was built under R version 3.4.1</code></pre>
+<pre class="r"><code>library(caret)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(corrplot)
+
+trainUrl &lt;-&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv&quot;
+testUrl &lt;- &quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv&quot;
+trainFile &lt;- &quot;./data/pml-training.csv&quot;
+testFile  &lt;- &quot;./data/pml-testing.csv&quot;
+if (!file.exists(&quot;./data&quot;)) {
+  dir.create(&quot;./data&quot;)
+}
+if (!file.exists(trainFile)) {
+  download.file(trainUrl, destfile=trainFile)
+}
+if (!file.exists(testFile)) {
+  download.file(testUrl, destfile=testFile)
+}
+trainRaw &lt;- read.csv(&quot;./data/pml-training.csv&quot;)
+testRaw &lt;- read.csv(&quot;./data/pml-testing.csv&quot;)
+dim(trainRaw)</code></pre>
 <pre><code>## [1] 19622   160</code></pre>
+<pre class="r"><code>dim(testRaw)</code></pre>
 <pre><code>## [1]  20 160</code></pre>
 <div id="observation" class="section level4">
 <h4>Observation</h4>
